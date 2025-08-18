@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cricket Auction</title>
+  <link rel="stylesheet" href="{% static 'styles.css' %}"/>
+</head>
+<body>
+
+  <div class="container">
+    {% if player %}
+    <div class="left-panel">
+      <img src="{{ player.image.url }}" alt="{{ player.name }}" class="cricketer-image"/>
+    </div>
+  
+
+    <div class="right-panel">
+        <div class="banner-image">
+    <img src="{% static 'banner.jpeg' %}" alt="LBPL Logo" class="banner-logo" />
+  </div>
+      <div class="player-info">
+        <h1 class="player-name">{{ player.name }}</h1>
+        <p class="player-role">{{ player.role }}</p>
+      </div>
+
+      <div class="bid-box">
+        <p class="bid-label">Current Bid</p>
+        <p class="bid-price">$ {{ player.bid_price }} USD</p>
+      </div>
+
+      <div class="button-panel">
+        <form method="post" action="{% url 'auction_home' %}">
+          {% csrf_token %}
+          <button type="submit" name="action" value="unsold" class="btn unsold">Unsold</button>
+          <button type="submit" name="action" value="bid" class="btn bid">Bid</button>
+          <button type="submit" name="action" value="sold" class="btn sold">Sold</button>
+        </form>
+      </div>
+    </div>
+    {% else %}
+    <div class="auction-complete-container">
+        <h1>Auction Complete!</h1>
+    </div>
+    {% endif %}
+  </div>
+
+</body>
+</html>
