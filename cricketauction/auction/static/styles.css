@@ -194,3 +194,88 @@ body {
   height: auto;
   border-radius: 8px;
 }
+.sold-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #000;
+  color: white;
+  text-align: center;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.sold-player-image {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 20px;
+  margin-bottom: 2rem;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+.sold-text {
+  font-size: 5rem;
+  color: #00ff00;
+  text-shadow: 0 0 20px rgba(0, 255, 0, 0.7);
+}
+
+.sold-name {
+  font-size: 2.5rem;
+  margin-top: 1rem;
+}
+
+.sold-price {
+  font-size: 2rem;
+  color: #ffaa00;
+  margin-top: 1rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+/* auction/static/css/auction_complete.css */
+.auction-complete-container {
+    /* background-image: url('../banner.jpeg'); */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+}
+
+.auction-complete-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for better text contrast */
+    z-index: 1;
+}
+
+.auction-complete-container h1 {
+    font-size: 4rem;
+    z-index: 2;
+    position: relative;
+    animation: popIn 0.8s ease-out forwards;
+}
+
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

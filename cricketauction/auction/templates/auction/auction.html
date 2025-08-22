@@ -10,7 +10,22 @@
 <body>
 
   <div class="container">
-    {% if player %}
+      {% if just_sold %}
+    <!-- SOLD SUMMARY SCREEN -->
+    <div class="sold-screen">
+      <img src="{{ sold_player.image.url }}" alt="{{ sold_player.name }}" class="sold-player-image" />
+      <h1 class="sold-text">SOLD!</h1>
+      <h2 class="sold-name">{{ sold_player.name }}</h2>
+      <p class="sold-price">Final Price: ${{ sold_player.bid_price }} USD</p>
+    </div>
+
+    <script>
+      setTimeout(() => {
+        window.location.href = "{% url 'auction_home' %}";
+      }, 5000); // Wait 3 seconds before redirecting
+    </script>
+
+    {% elif player %}
     <div class="left-panel">
       <img src="{{ player.image.url }}" alt="{{ player.name }}" class="cricketer-image"/>
     </div>

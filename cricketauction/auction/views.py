@@ -29,7 +29,10 @@ def auction_home(request):
                 current_player.is_unsold = False  # Just in case
                 current_player.save()
                 
-                return redirect('auction_home')
+                return render(request, 'auction/auction.html', {
+                    'just_sold': True,
+                    'sold_player': current_player,
+                })
                 
         elif action == 'unsold':
             #  if current_player.bid_price == 500:
